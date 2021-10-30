@@ -1,0 +1,33 @@
+server:
+  port: 51001
+  servlet:
+    context-path: /api/change-management
+
+app:
+  name: API Change Management
+
+logging:
+  config: classpath:logback.xml
+  level:
+    com:
+      change:
+        management:
+          apichangemanagement: DEBUG
+    org:
+      springframework:
+        cache: TRACE
+        web: DEBUG
+
+spring:
+  profiles:
+    active: dev
+
+springdoc:
+  api-docs:
+    path: /api-docs
+
+coins:
+  penny: 100
+  nickel: 100
+  dime: 100
+  quarter: 100
