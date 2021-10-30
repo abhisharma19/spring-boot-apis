@@ -17,17 +17,30 @@ import java.util.Map;
 import static com.change.management.apichangemanagement.constants.TenderChangeConstants.INSUFFICIENT_COINS;
 import static com.change.management.apichangemanagement.constants.TenderChangeConstants.INVALID_AMOUNT;
 
+/**
+ * The type Tender change validator.
+ */
 @Component
 public class TenderChangeValidator {
 
+    /** The logger. */
     private static final Logger logger = LoggerFactory.getLogger(TenderChangeValidator.class);
 
+    /** The messageSource. */
     @Autowired
     private MessageSource messageSource;
 
+    /** The tenderChagneUtil. */
     @Autowired
     private TenderChangeUtil tenderChangeUtil;
 
+    /**
+     * Validate requested denomination.
+     *
+     * @param denomination the denomination
+     * @param coinsMap     the coins map
+     * @throws TenderChangeException the tender change exception
+     */
     public void validateRequestedDenomination(Integer denomination, Map<String, Integer> coinsMap) throws TenderChangeException {
         if (denomination < 0) {
             throwTenderChangeException(INVALID_AMOUNT, HttpStatus.BAD_REQUEST);
@@ -39,6 +52,12 @@ public class TenderChangeValidator {
         }
     }
 
+    /**
+     * Method to throw the exception in case of an error.
+     * @param errorCode error code
+     * @param status http status
+     * @throws TenderChangeException tenderChangeException
+     */
     private void throwTenderChangeException(String errorCode, HttpStatus status) throws TenderChangeException {
         Object[] messageParams = null;
         String message = messageSource.getMessage(errorCode, messageParams, Locale.US);

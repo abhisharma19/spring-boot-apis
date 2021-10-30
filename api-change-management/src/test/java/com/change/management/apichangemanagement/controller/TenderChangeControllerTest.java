@@ -5,7 +5,6 @@ import com.change.management.apichangemanagement.domain.TenderChangeCriteria;
 import com.change.management.apichangemanagement.domain.TenderChangeEntity;
 import com.change.management.apichangemanagement.domain.messaging.TenderChangeRequest;
 import com.change.management.apichangemanagement.service.TenderChangeService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -36,7 +35,7 @@ public class TenderChangeControllerTest {
     TenderChangeService tenderChangeService;
 
     @InjectMocks
-    TenderChangeController tenderChangeController;
+    TenderChangeRestController tenderChangeController;
 
     private AutoCloseable closeable;
 
